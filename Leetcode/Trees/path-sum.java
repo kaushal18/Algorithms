@@ -13,7 +13,7 @@ class Solution {
 		currentSum += root.val;
 		
 		if(root.left == null && root.right == null && currentSum == targetSum) {
-				return true;
+			return true;
 		}
 		
 		boolean isLeftTreeHasSum = helper(root.left, targetSum, currentSum);
@@ -30,8 +30,8 @@ class Solution {
 		if(root == null) return false;
 		
 		if(root.left == null && root.right == null) {
-				if(targetSum == root.val) return true;
-				else return false;
+			if(targetSum == root.val) return true;
+			else return false;
 		}
 		
 		boolean hasLeftPathSum = hasPathSum(root.left, targetSum - root.val);
