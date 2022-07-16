@@ -1,5 +1,7 @@
 // https://leetcode.com/problems/path-sum/
 
+// Time - O(N)
+// Space - O(Height) which is O(N) in worst case
 class Solution {
   public boolean hasPathSum(TreeNode root, int targetSum) {
     return helper(root, targetSum, 0);
@@ -21,6 +23,8 @@ class Solution {
 	}
 }
 
+// Time - O(N)
+// Space - O(Height) which is O(N) in worst 
 class Solution {
 	public boolean hasPathSum(TreeNode root, int targetSum) {
 		if(root == null) return false;
