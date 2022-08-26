@@ -5,12 +5,12 @@
 // space - O(n * m)
 
 
-// Optimized - consider matrix as a single 1d array of index [0, n*m-1] and do binary search over [0, n*m-1]
+// consider matrix as a single 1d array of index [0, n*m-1] and do binary search over [0, n*m-1]
 // convert 1d to 2d by storing key value pair in map
 // 0th element used for binary search will map to (0,0) and so on 
 
 // time - O(n * m)
-// space - O(1)
+// space - O(n * m) because of map
 class Solution {
     public boolean searchMatrix(int[][] matrix, int target) {
       Map<Integer, Pair<Integer, Integer>> map = new HashMap<>();
@@ -37,6 +37,38 @@ class Solution {
           left = mid + 1;
         }
         else if(matrix[i][j] > target) {
+          right = mid - 1;
+        }
+        else {
+          return true;
+        }
+      }
+      return false;
+    }
+}
+
+
+// optimizing space 
+// use this conversions - 
+// n * m matrix convert to an array => matrix[x][y] => a[x * m + y]
+
+// an array convert to n * m matrix => a[x] =>matrix[x / m][x % m];
+
+class Solution {
+    public boolean searchMatrix(int[][] matrix, int target) {
+      int rows = matrix.length;
+      int cols = matrix[0].length;
+      
+      int left = 0;
+      int right = rows*cols - 1;
+      while(left <= right) {
+        int mid = (left + right)/2;
+        
+        // convert 1d to 2d
+        if(matrix[mid / cols][mid % cols] < target) {
+          left = mid + 1;
+        }
+        else if(matrix[mid / cols][mid % cols] > target) {
           right = mid - 1;
         }
         else {
