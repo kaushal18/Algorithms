@@ -1,6 +1,6 @@
 // https://leetcode.com/problems/find-all-duplicates-in-an-array/
 
-// negative marking solution
+// negative marking solution - can modify the input array
 class Solution {
     public List<Integer> findDuplicates(int[] nums) {
         List<Integer> ans = new ArrayList<>();
