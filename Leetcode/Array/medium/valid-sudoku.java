@@ -45,3 +45,31 @@ class Solution {
       return true;
     }
 }
+
+
+// Using single HashSet
+// use some unique combination to help indetify same row, col and block numbers in single hashset
+class Solution {
+    public boolean isValidSudoku(char[][] board) {
+      Set<String> set = new HashSet<>();
+      
+      for(int i=0; i<9; i++) {
+        for(int j=0; j<9; j++) {
+          if(board[i][j] != '.') {
+            String rowKey = board[i][j] + "ROW#" + i;
+            String colKey = board[i][j] + "COL#" + j;
+            String subBlockKey = board[i][j] + "SUBBOCK#" + (i/3) + "" + (j/3);
+            
+            if(set.contains(rowKey) || set.contains(colKey) || set.contains(subBlockKey)) {
+              return false;
+            }
+            set.add(rowKey);
+            set.add(colKey);
+            set.add(subBlockKey);
+          }
+        }
+      }
+      
+      return true;
+    }
+}
