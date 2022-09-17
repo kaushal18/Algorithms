@@ -1,5 +1,6 @@
 
 // time - O(N)
+// follow up - if characters have same frequency return the lexographically first string --> for this we will create a 256 length array inside bucket for each index
 class Solution {
     public String frequencySort(String s) {
       Map<Character, Integer> map = new HashMap<>();
