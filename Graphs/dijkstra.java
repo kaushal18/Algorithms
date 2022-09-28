@@ -41,7 +41,7 @@ class Main {
       System.out.println(Arrays.toString(distance));
   }
 
-  // lazy implementation - see william fesiet video
+  // lazy implementation - see william fesiet video https://www.youtube.com/watch?v=pSqmAO-m7Lk&list=PLDV1Zeh2NRsDGO4--qE8yH72HFL1Km93P&index=18
   public static int[] findShortestPath(List<List<Node>> adjList, int source, int n) {
     PriorityQueue<Node> minHeap = new PriorityQueue<>((v1, v2) -> v1.weight - v2.weight);
     minHeap.add(new Node(source, 0));
