@@ -80,6 +80,11 @@ class Main {
           minHeap.add(new Node(v, distance[v]));
         }
       }
+
+      // if we need to find shortest distance from src to destination then we can terminate early
+      // if(u == endNode) {
+      //   return distance[u]
+      // }
     }
 
     return distance;
