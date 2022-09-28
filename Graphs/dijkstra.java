@@ -67,6 +67,7 @@ class Main {
       int u = node.vertex;
       // if this is an stale entry in heap then ignore this value
       if(distance[u] < node.weight) continue;
+      visited[u] = true; 
 
       for(Node child : adjList.get(u)) {
         int v = child.vertex;
@@ -79,7 +80,6 @@ class Main {
           minHeap.add(new Node(v, distance[v]));
         }
       }
-      visited[u] = true; 
     }
 
     return distance;
