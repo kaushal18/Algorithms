@@ -41,6 +41,7 @@ class Main {
       System.out.println(Arrays.toString(distance));
   }
 
+  // lazy implementation - see william fesiet video
   public static int[] findShortestPath(List<List<Node>> adjList, int source, int n) {
     PriorityQueue<Node> minHeap = new PriorityQueue<>((v1, v2) -> v1.weight - v2.weight);
     minHeap.add(new Node(source, 0));
@@ -64,12 +65,14 @@ class Main {
       // at each iteration we take edge with minimum weight --> greedy
       Node node = minHeap.poll();
       int u = node.vertex;
+      // if this is an stale entry in heap then ignore this value
+      if(distance[u] < node.weight) continue;
 
       for(Node child : adjList.get(u)) {
         int v = child.vertex;
         int weight = child.weight;
 
-        // distance to reach v through u (ie, dist of u + edge --> distance[u] + edge_weight) is less than the current distance to reach v then update to the minimum one
+        // distance to reach v through u (ie, dist of u + edge --> distance[u] + edge_weight) is less than the current minimum distance to reach v then update to the minimum one
         if(!visited[v] && distance[u]+weight < distance[v]) {
           distance[v] = distance[u]+weight;
           prev[v] = u;
