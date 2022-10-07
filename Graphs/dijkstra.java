@@ -1,5 +1,6 @@
 import java.util.*;
 
+// Time complexity - O(Elog(V))
 class Main {
   public static void main(String[] args) {
     // adj list , a --> [(b,1) ..neighbouring node and weight.. , (c,2)]
