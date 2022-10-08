@@ -44,3 +44,7 @@ class Solution {
       return result;
     }
 }
+
+// https://leetcode.com/problems/course-schedule-iv/
+// same logic --> check if u is prerequisite of v
+// find all anscestors of v and check if u is present in the anscestor set 
