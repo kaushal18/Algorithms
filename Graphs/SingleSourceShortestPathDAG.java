@@ -1,3 +1,5 @@
+// to find longest path from src to dst simple multiply every edge weight with -1
+
 class SingleSourceShortestPathDAG {
   public static void main(String[] args) {
     int n = 8;
