@@ -1,3 +1,6 @@
+# Time - O(N)
+# Space - O(1)
+# Single pass solution
 class Solution:
     def sortColors(self, nums: List[int]) -> None:
         """
