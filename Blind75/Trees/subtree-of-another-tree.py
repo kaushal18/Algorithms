@@ -1,0 +1,68 @@
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, val=0, left=None, right=None):
+#         self.val = val
+#         self.left = left
+#         self.right = right
+class Solution:
+    subtreeFound = False
+
+    def isSameTree(self, p, q):
+        if p == None and q == None:
+            return True
+        
+        if p == None or q == None:
+            return False
+
+        if p.val != q.val:
+            return False
+
+        return self.isSameTree(p.left, q.left) and self.isSameTree(p.right, q.right)
+
+    def helper(self, root, subRoot):
+        if root == None:
+            return
+
+        if root.val == subRoot.val:
+            self.subtreeFound = self.subtreeFound or self.isSameTree(root, subRoot)
+
+        self.helper(root.left, subRoot)
+        self.helper(root.right, subRoot)
+
+    def isSubtree(self, root: Optional[TreeNode], subRoot: Optional[TreeNode]) -> bool:
+        self.helper(root, subRoot)
+        return self.subtreeFound
+
+
+# Without the global variable
+
+# Time - O(N * M)
+class Solution:
+    def isSameTree(self, p, q):
+        if p == None and q == None:
+            return True
+        
+        if p == None or q == None:
+            return False
+
+        if p.val != q.val:
+            return False
+
+        return self.isSameTree(p.left, q.left) and self.isSameTree(p.right, q.right)    
+
+    # Run a dfs over the "root" and for each node check if the subtree matches with "subRoot"
+    def isSubtree(self, root: Optional[TreeNode], subRoot: Optional[TreeNode]) -> bool:
+        if root == None:
+            return False
+
+        if root.val == subRoot.val:
+            if self.isSameTree(root, subRoot):
+                return True
+
+        return self.isSubtree(root.left, subRoot) or self.isSubtree(root.right, subRoot)
+
+
+# This can also be implemented using Merkle Tree in O(N + M) time
+
+# create a hash for each node in the treemm this will represent a Merkle tree indicating the hash value of the subtree and the root
+# if two nodes have same hash value then their subtrees should be same
