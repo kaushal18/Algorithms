@@ -10,7 +10,7 @@ class SmallestInfiniteSet:
         self.sortedSet = SortedSet()
         self.minCounter = 1
 
-    # O(log N)
+    # O(log N) - SortedSet add and delete are log(N) operations
     def popSmallest(self) -> int:
         if len(self.sortedSet) > 0 and self.sortedSet[0] <= self.minCounter:
             if self.sortedSet[0] == self.minCounter:
@@ -43,7 +43,7 @@ class SmallestInfiniteSet:
         self.seenSet = set()
         self.minCounter = 1
 
-    # O(1)
+    # O(log N) - to remove the top element
     def popSmallest(self) -> int:
         if len(self.minHeap) > 0 and self.minHeap[0] <= self.minCounter:
             if self.minHeap[0] == self.minCounter:
@@ -57,7 +57,7 @@ class SmallestInfiniteSet:
         
         return _min
         
-    # O(log N)
+    # O(log N) - to add new element in the heap
     def addBack(self, num: int) -> None:
         if num < self.minCounter:
             if num not in self.seenSet:
